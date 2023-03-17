@@ -67,30 +67,11 @@ ISR(WDT_vect) {
 // ================================
 void activationDuWatchdog() {
 
-  __asm__ __volatile__ ("wdr");           // On (re)met à zéro le compteur du watchdog, pour être "au plus juste"
-                                          // (instruction écrite ici en assembleur, histoire de varier !)
-
-
-  WDTCSR = (1 << WDCE) | (1 << WDE);          // Déverrouille les bits de configuration du Watchdog (procédure spécifiée par le fabricant)
-
-  // ******************************************************************************************************************
-  // TABLEAU DE CORRESPONDANCE ENTRE BITS WDP3..0 ET DÉLAI AVANT INTERRUPTION
-  // ******************************************************************************************************************
-  //  WDP3  | WDP2  | WDP1  | WDP0  | Nombre de cycles (oscillateur 128kHz du WDT) | Délai avant activation du WatchDog
-  //    0   |   0   |   0   |   0   |    2K (soit    2048 cycles)                  | 16 ms
-  //    0   |   0   |   0   |   1   |    4K (soit    4096 cycles)                  | 32 ms
-  //    0   |   0   |   1   |   0   |    8K (soit    8192 cycles)                  | 64 ms
-  //    0   |   0   |   1   |   1   |   16K (soit   16384 cycles)                  | 125 ms
-  //    0   |   1   |   0   |   0   |   32K (soit   32768 cycles)                  | 250 ms
-  //    0   |   1   |   0   |   1   |   64K (soit   65536 cycles)                  | 500 ms
-  //    0   |   1   |   1   |   0   |  128K (soit  131072 cycles)                  | 1 sec
-  //    0   |   1   |   1   |   1   |  256K (soit  262144 cycles)                  | 2 sec
-  //    1   |   0   |   0   |   0   |  512K (soit  524288 cycles)                  | 4 sec
-  //    1   |   0   |   0   |   1   | 1024K (soit 1048576 cycles)                  | 8 sec          <----- mode choisi
-  // ******************************************************************************************************************
+  __asm__ __volatile__ ("wdr");
   
-  WDTCSR = 0b01100001;          // Mise à 1 du bit WDIE (autorisant les "interruptions watchdog")
-                                // ainsi que les bits WDP3 et WDP0, pour une interruption toutes les 8 secondes
+  WDTCSR = (1 << WDCE) | (1 << WDE);          // Déverrouille les bits de configuration du Watchdog (procédure spécifiée par le fabricant)
+  
+  WDTCSR = 0b01100001;          // Mise à 1 du bit WDIE (autorisant les "interruptions watchdog") ainsi que les bits WDP3 et WDP0, pour une interruption toutes les 8 secondes
 }
 
 // ====================================
