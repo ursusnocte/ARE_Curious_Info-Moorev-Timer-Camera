@@ -1,7 +1,7 @@
 /*
 Fichier de test consommation arduino Nano Moorev-Timer-Camera
-
-L'envoi du signal de déclenchement de 3 secondes sur le pin de la gopro sera simulé par l'allumage de la led interne de d'arduino Nano
+Allumage de 8secondes de la led au démarrage du programme
+L'envoi du signal de déclenchement durant 5 secondes sur le pin de la gopro est simulé par l'allumage de la led interne de d'arduino Nano
 */
 
 // Librairies utilisées
@@ -17,11 +17,17 @@ int cycle_left = 7; //diminution de 1 à chaque cycle pour atteindre un temps to
 // Initialisation programme
 // ========================
 void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
 
   // Initialisation de la liaison série
   Serial.begin(9600);
   Serial.println(F("Démarrage du programme…"));
   Serial.println("");
+
+  
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(8000);
+  digitalWrite(LED_BUILTIN, LOW);
 
 }
 
@@ -125,11 +131,10 @@ void miseEnSommeilDuMicrocontroleur(void) {
 // ==============================================
 void declenchementGoPro(void) {
   Serial.println("-----------------------------");
-  Serial.println("Allumage de la LED embarquée sur l'arduino (pendant 3 seconde)");
+  Serial.println("Allumage de la LED embarquée sur l'arduino (pendant 5 seconde)");
 
-  pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(3000);
+  delay(5000);
   digitalWrite(LED_BUILTIN, LOW);
 
   Serial.println("Extinction de la LED");

@@ -1,5 +1,5 @@
 /*
-Script de test ARE Moorev-Timer-Caméra hibernation ESP32 : Allume la led intégré pendant 3 secondes toutes les 60 secondes
+Script de test ARE Moorev-Timer-Caméra hibernation ESP32 : Allume la led intégré pendant 5 secondes toutes les 60 secondes
 */
 
 #define uS_TO_S_FACTOR 1000000
@@ -10,9 +10,9 @@ void setup(){
   pinMode(LED_BUILTIN, OUTPUT);
   
   Serial.println("----------------------");
-  Serial.println("Allumage Led pour 3 secondes");
+  Serial.println("Allumage Led pour 5 secondes");
   digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(3000);                       // wait for a second
+  delay(5000);                       // wait for a second
   digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
 
 
