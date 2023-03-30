@@ -28,9 +28,9 @@ print("Arduino total time: ", divmod(diff_time_arduino.total_seconds(), 60)[0], 
 print("Arduino total consumption: ", round(sum(data_arduino),2), "mA")
 
 print("----------------------------------------------")
-# Print average consumption in m Watts
-print("ESP32 average consumption: ", round(sum(data_esp32)/len(data_esp32)*3.3/1000, 2), "mW")
-print("Arduino average consumption: ", round(sum(data_arduino)/len(data_arduino)*3.3/1000, 2), "mW")
+# Print average consumption in m Watts/hour
+print("ESP32 average consumption: ", round(sum(data_esp32)/len(data_esp32)*60*60/1000,4), "mW/h")
+print("Arduino average consumption: ", round(sum(data_arduino)/len(data_arduino)*60*60/1000,4), "mW/h")
 
 # Plot the data
 plt.plot(data_esp32, label="ESP32 consumption", color="red")
