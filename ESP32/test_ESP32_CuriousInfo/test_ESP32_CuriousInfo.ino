@@ -1,5 +1,7 @@
 /*
 Script de test ARE Moorev-Timer-Caméra hibernation ESP32 : Allume la led intégré pendant 5 secondes toutes les 60 secondes
+
+Test réalisé avec un Adafruit HUZZAH32 - ESP32 Feather
 */
 
 #define uS_TO_S_FACTOR 1000000
