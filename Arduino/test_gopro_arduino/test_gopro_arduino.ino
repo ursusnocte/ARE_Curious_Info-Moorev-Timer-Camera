@@ -1,15 +1,14 @@
 void setup() {
-  pinMode(13, OUTPUT); //internal led pin
-  
-  pinMode(12, OUTPUT); //connect to gopro pin 19
+pinMode(14, OUTPUT); // Broche A0
 
-  digitalWrite(12, HIGH); //turn on gopro by sending 3sec signal
-  digitalWrite(13, HIGH); //turn on led
-  
-  delay(3000); // wait 3sec to turn on gopro
-  
-  digitalWrite(12, LOW); //end of 3sec signal
-  digitalWrite(13, LOW); //turn off led
+for(int i=0; i<10; i++){ // Déclenchement du script de la gopro 10 fois de suite à 30 secondes d'intervalle
+    digitalWrite(14, LOW);
+    delay(3000);
+    digitalWrite(14, HIGH);
+    delay(3000);
+    
+    delay(30000);
+  }
 }
 
 void loop() {}
