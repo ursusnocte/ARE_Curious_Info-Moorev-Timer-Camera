@@ -1,7 +1,11 @@
-/*
-   Author : Emre Şahin
-   Date   : 1 Feb 20
-   Email  : arxtechnologies@gmail.com
+/* 
+   Orinal author :
+      Author : Emre Şahin
+      Date   : 1 Feb 20
+      Email  : arxtechnologies@gmail.com
+
+   Mofifications réalisées durant le projet d'ARE.
+
 */
 
 #include "FS.h"       // SD Card
